@@ -452,11 +452,7 @@ const todos = [
 ];
 const contenedor = document.querySelector(".tasks-container");
 todos.forEach(task => {
-  if (task.completed) {
-    contenedor.innerHTML += `<div class="task"><div class="user-id">${task.userId}</div><div class="task-text done"> ✅ ${task.title}</div></div>`;
-  } else {
-    contenedor.innerHTML += `<div class="task"><div class="user-id">${task.userId}</div><div class="task-text todo"> 🚧 ${task.title}</div></div>`;
-  }
+    contenedor.innerHTML += printTask(task);
 });
 
 function filter() {
@@ -465,10 +461,13 @@ function filter() {
   contenedor.innerHTML = "";
   console.log(filteredTasks);
   filteredTasks.forEach(task => {
-    if (task.completed) {
-      contenedor.innerHTML += `<div class="task"><div class="user-id">${task.userId}</div><div class="task-text done"> ✅ ${task.title}</div>`;
-    } else {
-      contenedor.innerHTML += `<div class="task"><div class="user-id">${task.userId}</div><div class="task-text todo"> 🚧 ${task.title}</div></div>`;
-    }
+      contenedor.innerHTML += printTask(task);
   });
+}
+
+function printTask(task){
+  const todo= "🚧";
+  const done= "✅";
+  const taskHtml= `<div class="task"><div class="user-id">${task.userId}</div><div class="task-text ${task.completed? "done":"todo"}"> ${task.completed?done:todo} ${task.title}</div></div>`
+  return taskHtml;
 }

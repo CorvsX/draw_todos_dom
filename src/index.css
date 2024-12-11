@@ -30,10 +30,12 @@ body {
   width: 100%;
   border-radius: 40px;
   text-align: center; 
+  font-size:30px;
 }
 
 .task-text.done {
-  background-color: greenyellow;
+  background-color: darkgreen;
+  color:white;
 }
 
 .task-text.todo {
