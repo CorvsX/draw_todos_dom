@@ -57,6 +57,7 @@ function addTask() {
       // printTask(task);
       todos.push(task);
       showAll(todos);
+      clearForm();
       console.log(task);
     });
 }
@@ -75,4 +76,47 @@ function deleteTask(id) {
       }
     })
     .catch(error => console.error("Error", error));
+}
+
+function clearForm() {
+  let idUser = document.getElementById("id-user").value;
+  let msgTask = document.getElementById("task-info").value;
+  const checkboxDone = document.getElementById("done").checked;
+
+  idUser = "";
+  msgTask = "";
+  checkboxDone.checked = false;
+}
+
+function modifyTask() {
+  const taskID = document.getElementById("id-user").value;
+  const msgTask = document.getElementById("task-info").value;
+  const checkboxDone = document.getElementById("done").checked;
+
+  const modifiedTask =
+  {
+    title: msgTask,
+    completed: checkboxDone
+  };
+
+  fetch(`${urlAPITodo}/${taskID}`, {
+    method: "PATCH",
+    body: JSON.stringify(modifiedTask),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      // clearForm();
+      console.log("Paso 1", data);
+      const taskFound = todos.find(task => task.id === parseInt(taskID));
+      console.log("Paso 2 -Datos Cambiados", taskFound);
+      taskFound.title = data.title;
+      console.log("Paso 3 - Valores del Tittle Cambiados", taskFound.title);
+      taskFound.completed = data.completed;
+      console.log("Paso 4 - Valores del Completed Cambiados", taskFound.completed);
+
+      showAll(todos);
+    }).catch(error => console.error("Error", error));
 }

@@ -12,24 +12,25 @@
 
 <body>
   <div class="search-container">
-    <p>Id de usuario: </p>
+    <p>User ID: </p>
     <input class="input-filter" type="text">
-    <button class="filter-button" onclick="filter()">Filtrar</button>
+    <button class="filter-button" onclick="filter()">Filter</button>
   </div>
   <div class="show-all">
-    <button class="filter-button" onclick="showAll()">Mostrar todas</button>
+    <button class="filter-button" onclick="showAll()">Show All</button>
   </div>
 
   <div class="create-task">
-    <input id="id-user" type="text" placeholder="Write here">
-    <input id="task-info" type="text" placeholder="Write here aswell">
-    <button id="button-id" onclick="addTask()">Añadir</button>
+    <input id="id-user" type="number" placeholder="Write ID here">
+    <input id="task-info" type="text" placeholder="Write a task">
+    <button id="button-id" onclick="addTask()">Add</button>
+    <button id="modify-task" onclick="modifyTask()">Modify</button>
 
     <div class="checkbox-group">
 
-      <label>Estado:</label>
+      <label>State:</label>
 
-      <input type="checkbox" id="done" name="task-status" value="done"> Hecha
+      <input type="checkbox" id="done" name="task-status" value="done"> Done
 
     </div>
   </div>
