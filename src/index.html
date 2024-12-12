@@ -19,6 +19,20 @@
   <div class="show-all">
     <button class="filter-button" onclick="showAll()">Mostrar todas</button>
   </div>
+
+  <div class="create-task">
+    <input id="id-user" type="text" placeholder="Write here">
+    <input id="task-info" type="text" placeholder="Write here aswell">
+    <button id="button-id" onclick="addTask()">Añadir</button>
+
+    <div class="checkbox-group">
+
+      <label>Estado:</label>
+
+      <input type="checkbox" id="done" name="task-status" value="done"> Hecha
+
+    </div>
+  </div>
   <div class="tasks-container">
 
   </div>
